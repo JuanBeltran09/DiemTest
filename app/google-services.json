@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "67383576215",
+    "project_id": "diem-test-26458",
+    "storage_bucket": "diem-test-26458.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67383576215:android:ff1d274babf072b08dcbd2",
+        "android_client_info": {
+          "package_name": "com.example.diem_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABQZbwWo_WR-LMFhxXcu-un9U54p67-vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67383576215:android:6b375a5260caace08dcbd2",
+        "android_client_info": {
+          "package_name": "com.example.diemtest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABQZbwWo_WR-LMFhxXcu-un9U54p67-vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
