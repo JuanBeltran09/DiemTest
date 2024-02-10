@@ -5,4 +5,5 @@
     <color name="colorPrimary">#540D6E</color>
     <color name="colorSecondary">#C85EEF</color>
     <color name="bg_light_grey">#ECECEC</color>
+    <color name="bg_logo">#FA4F66</color>
 </resources>
