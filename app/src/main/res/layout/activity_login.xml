@@ -58,8 +58,11 @@
                     android:drawableLeft="@drawable/phone"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <TextView
+                android:background="@drawable/btn_bg"
                 android:id="@+id/sendOtp"
+                android:gravity="center"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_marginTop="16dp"
                 android:text="Send"
@@ -111,8 +114,11 @@
                     android:drawableLeft="@drawable/phone"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <TextView
+                android:background="@drawable/btn_bg"
                 android:id="@+id/verifyOtp"
+                android:gravity="center"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_marginTop="16dp"
                 android:text="Verify OTP"
