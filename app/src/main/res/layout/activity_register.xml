@@ -57,6 +57,7 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImage"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center_horizontal"
@@ -114,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/userCity"
                         android:hint="City"
-                        android:inputType="number"
+                        android:inputType="text"
 
                         android:drawablePadding="12dp"
                         android:drawableLeft="@drawable/phone"/>
@@ -131,7 +132,7 @@
 
                 <TextView
                     android:background="@drawable/btn_bg"
-                    android:id="@+id/sendOtp"
+                    android:id="@+id/saveData"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:layout_width="match_parent"
