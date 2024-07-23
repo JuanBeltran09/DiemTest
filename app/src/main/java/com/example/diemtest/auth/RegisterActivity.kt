@@ -64,7 +64,7 @@ class RegisterActivity : AppCompatActivity() {
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
             .child("profile.jpg")
 
-            storageRef.putFile(imageUri!!)
+        storageRef.putFile(imageUri!!)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener {
                     storeData(it)

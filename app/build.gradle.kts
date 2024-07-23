@@ -58,6 +58,6 @@ dependencies {
 
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
-    implementation ("com.github.yuyakaido:CardStackView:v2.3.4")
+    implementation ("com.yuyakaido.android:card-stack-view:2.3.4")
 
 }
