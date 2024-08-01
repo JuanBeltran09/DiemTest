@@ -12,6 +12,7 @@ import com.example.diemtest.R
 import com.example.diemtest.adapter.DatingAdapter
 import com.example.diemtest.databinding.FragmentDatingBinding
 import com.example.diemtest.model.UserModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -86,7 +87,8 @@ class DatingFragment : Fragment() {
                         list = arrayListOf()
                         for (data in snapshot.children){
                             val model = data.getValue(UserModel::class.java)
-                            list.add(model!!)
+                            if (model!!.number != FirebaseAuth.getInstance().currentUser!!.phoneNumber!!)
+                                list.add(model)
                         }
                         list.shuffle()
                         init()

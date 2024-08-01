@@ -124,7 +124,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkUserExist(number: String) {
 
-        FirebaseDatabase.getInstance().getReference("users").child(number)
+        FirebaseDatabase.getInstance().getReference("users").child("+57$number")
             .addValueEventListener(object  : ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {
                     dialog.dismiss()
