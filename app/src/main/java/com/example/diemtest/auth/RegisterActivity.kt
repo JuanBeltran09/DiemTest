@@ -80,6 +80,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun storeData(imageUrl: Uri?){
         val data = UserModel(
+            number = FirebaseAuth.getInstance().currentUser!!.phoneNumber!!,
             name = binding.userName.text.toString(),
             image = imageUrl.toString(),
             email = binding.userEmail.text.toString(),
