@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
+    <color name="light_grey">#DDDCDC</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#540D6E</color>
     <color name="colorSecondary">#C85EEF</color>
