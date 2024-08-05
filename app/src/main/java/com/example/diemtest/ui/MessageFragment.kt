@@ -51,7 +51,11 @@ class MessageFragment : Fragment() {
 
                 }
 
-                binding.recyclerView.adapter = MessageUserAdapter(requireContext(), list, newList)
+                try {
+                    binding.recyclerView.adapter = MessageUserAdapter(requireContext(), list, newList)
+                } catch (e: Exception) {
+
+                }
 
                 Config.hideDialog()
             }

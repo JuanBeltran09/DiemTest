@@ -24,15 +24,46 @@ class MessageActivity : AppCompatActivity() {
         binding = ActivityMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getData(intent.getStringExtra("chat_id")) //Por aquí está el error
+        //getData(intent.getStringExtra("chat_id")) //Por aquí está el error
+
+        verifyChatId()
 
         binding.imageView4.setOnClickListener{
             if (binding.yourMeassage.text!!.isEmpty()){
                 Toast.makeText(this,"Please enter your message",Toast.LENGTH_SHORT).show()
             }else{
-                sendMessage(binding.yourMeassage.text.toString())
+                storeData(binding.yourMeassage.text.toString())
             }
         }
+    }
+
+    private var senderId : String? = null
+    private var chatId : String? = null
+
+    private fun verifyChatId() {
+        val receiverId = intent.getStringExtra("userId")
+        senderId = FirebaseAuth.getInstance().currentUser!!.phoneNumber
+
+        chatId = senderId+receiverId
+        val reverseChatId = receiverId+senderId
+
+        val reference = FirebaseDatabase.getInstance().getReference("chats")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.hasChild(chatId!!)){
+                    getData(chatId)
+                }else if(snapshot.hasChild(reverseChatId)){
+                    chatId = reverseChatId
+                    getData(chatId)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@MessageActivity,"Something went wrong", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     private fun getData(chatId: String?) {
@@ -58,34 +89,7 @@ class MessageActivity : AppCompatActivity() {
 
     }
 
-    private fun sendMessage(msg: String) {
-
-        val receiverId = intent.getStringExtra("userId")
-        val senderId = FirebaseAuth.getInstance().currentUser!!.phoneNumber
-
-        val chatId = senderId+receiverId
-        val reverseChatId = receiverId+senderId
-
-        val reference = FirebaseDatabase.getInstance().getReference("chats")
-
-        reference.addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.hasChild(reverseChatId)){
-                    storeData(reverseChatId,msg,senderId)
-                }else{
-                    storeData(chatId,msg,senderId)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MessageActivity,"Something went wrong", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-
-    }
-
-    private fun storeData(chatId: String, msg: String, senderId: String?) {
+    private fun storeData(msg: String) {
 
         val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
         val currentTime: String = SimpleDateFormat("HH:mm a", Locale.getDefault()).format(Date())
@@ -96,7 +100,7 @@ class MessageActivity : AppCompatActivity() {
         map["currentTime"] = currentTime
         map["currentDate"] = currentDate
 
-        val reference = FirebaseDatabase.getInstance().getReference("chats").child(chatId)
+        val reference = FirebaseDatabase.getInstance().getReference("chats").child(chatId!!)
 
         reference.child(reference.push().key!!).setValue(map).addOnCompleteListener {
             if (it.isSuccessful){
