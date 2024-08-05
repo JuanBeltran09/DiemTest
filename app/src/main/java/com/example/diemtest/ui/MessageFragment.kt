@@ -35,11 +35,12 @@ class MessageFragment : Fragment() {
 
     private fun getData() {
         Config.showDialog(requireContext())
-        var list = arrayListOf<String>()
-        var newList = arrayListOf<String>()
         val currentId = FirebaseAuth.getInstance().currentUser!!.phoneNumber
         FirebaseDatabase.getInstance().getReference("chats").addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                var list = arrayListOf<String>()
+                var newList = arrayListOf<String>()
 
                 for (data in snapshot.children){
 

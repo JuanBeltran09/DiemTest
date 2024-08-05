@@ -1,11 +1,13 @@
 package com.example.diemtest.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.diemtest.activity.MessageActivity
 import com.example.diemtest.databinding.UserItemLayoutBinding
 import com.example.diemtest.model.UserModel
 import com.google.firebase.database.DataSnapshot
@@ -14,7 +16,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.Objects
 
-class MessageUserAdapter(val context: Context, val list: ArrayList<String>, val chatKey: List<String>) : RecyclerView.Adapter<MessageUserAdapter.MessageUserViewHolder>() {
+class MessageUserAdapter(
+    val context: Context,
+    val list: ArrayList<String>,
+    val chatKey: List<String>)
+    : RecyclerView.Adapter<MessageUserAdapter.MessageUserViewHolder>() {
 
     inner class MessageUserViewHolder(val binding : UserItemLayoutBinding)
         :RecyclerView.ViewHolder(binding.root)
@@ -45,6 +51,13 @@ class MessageUserAdapter(val context: Context, val list: ArrayList<String>, val 
 
             }
         )
+
+        holder.itemView.setOnClickListener{
+            val inte  = Intent(context, MessageActivity::class.java)
+            inte.putExtra("chat_id",chatKey[position])
+            inte.putExtra("userId",list[position])
+            context.startActivity(inte)
+        }
 
     }
 
