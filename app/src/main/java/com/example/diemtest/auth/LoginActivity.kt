@@ -79,7 +79,9 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-
+                dialog.dismiss()
+                Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
+                Log.d("TAGI", "onVerificationFailed: ${e.message}")
             }
 
             override fun onCodeSent(
